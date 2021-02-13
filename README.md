@@ -70,3 +70,52 @@ There is two files to make mock requests. This was used for development purposes
 
 * Unit Tests
 * Benchmark
+
+
+### Siege benchmark
+
+`:5000/logs`
+```
+
+siege -c30 -t30S 'http://0.0.0.0:5000/logs POST {"ip":"192.168.12.12"}' --content-type 'application/json'
+
+** SIEGE 4.0.4
+** Preparing 30 concurrent users for battle.
+The server is now under siege...
+Lifting the server siege...
+Transactions:                  11252 hits
+Availability:                 100.00 %
+Elapsed time:                  29.18 secs
+Data transferred:               0.03 MB
+Response time:                  0.08 secs
+Transaction rate:             385.61 trans/sec
+Throughput:                     0.00 MB/sec
+Concurrency:                   29.92
+Successful transactions:       11252
+Failed transactions:               0
+Longest transaction:            0.28
+Shortest transaction:           0.00
+```
+
+`:9102/metrics`
+
+```
+siege -c5 -t30S 'http://0.0.0.0:9102/metrics'                   ** SIEGE 4.0.4
+** Preparing 5 concurrent users for battle.
+The server is now under siege...
+Lifting the server siege...
+Transactions:                   1798 hits
+Availability:                 100.00 %
+Elapsed time:                  29.20 secs
+Data transferred:              29.06 MB
+Response time:                  0.08 secs
+Transaction rate:              61.58 trans/sec
+Throughput:                     1.00 MB/sec
+Concurrency:                    4.98
+Successful transactions:        1798
+Failed transactions:               0
+Longest transaction:            0.16
+Shortest transaction:           0.04```
+
+```
+```
