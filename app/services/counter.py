@@ -6,6 +6,6 @@ class CustomIPCounter(object):
         self.ips = []
 
     def register(self, payload):
-        logger.debug(f"Registering ip {ip}")
         ip = payload["ip"]
+        logger.debug(f"Registering ip {ip}")
         self.ips.append(ip)
