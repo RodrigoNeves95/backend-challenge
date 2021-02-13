@@ -19,7 +19,6 @@ async def ip_post_request(payload : dict):
 
 @router.get("/metrics")
 async def ip_post_request() -> int:
-    logger.debug("asd")
     logger.debug(counter.ips)
     return len(list(set(counter.ips)))
 
