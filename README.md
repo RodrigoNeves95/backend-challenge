@@ -44,4 +44,29 @@ You have 3 hours to implement, benchmark, and document your solution. Decide on 
 
 # Initial Approach (before implementation)
 
-Setup a fastAPI app to receive POST requests on :5000 and store necessary data in memory. Use prometheus_client to server metrics on port :9102/metrics. Use docker to serve everything together with port 5000 and 9102 exposed.
+Setup a fastAPI app to receive POST requests on :5000 and store necessary data in memory. Use prometheus_client to serve metrics on port :9102/metrics. Use docker to serve everything together with port 5000 and 9102 exposed.
+
+# Final Approach 
+
+The current implementation is described above. The only thing worth to add is we are using a middleware to register Prometheus metrics automatically and serve on ``/metrics``
+
+### How to run
+
+To deploy the microservice run `make deploy`. This will build a docker image and deploy it with ports `5000` and `9102` exposed. After that receiving JSON logs on ``:5000/logs`` and read metrics on ``:9102/metrics`` should be working.
+
+There is two files to make mock requests. This was used for development purposes and not a final goal. That being said if you want to use them, make sure that you have the necessary dependencies.
+
+`python mock_logs_request.py --number int --port int --host str`
+
+* `--number` Number of random IPs POST request to make
+* `--port`   Target Port. Default = 5000
+* `--host`   Target Host. Default = "localhost" 
+
+`python mock_metrics_request.py int --port int --host str `
+* `--port`   Target Port. Default = 5000
+* `--host`   Target Host. Default = "localhost" 
+
+### What is missing
+
+* Unit Tests
+* Benchmark
