@@ -39,5 +39,5 @@ if __name__ == "__main__":
 
     payload = generate_random_ip(args.number)
     request = partial(send_request, host=args.host, port=args.port)
-    with ThreadPoolExecutor(max_workers=1) as executor:
+    with ThreadPoolExecutor(max_workers=12) as executor:
         executor.map(request, payload)

@@ -9,6 +9,8 @@ RUN pip install joblib
 RUN pip install uvicorn
 RUN pip install loguru
 RUN pip install fastapi
+RUN pip install starlette-prometheus
+RUN pip install prometheus_client
 
 COPY . ./
 
